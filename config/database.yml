@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: postgres
+  password: password
+
+development:
+  <<: *default
+  database: haml-demo
+  host: localhost
+
+test:
+  <<: *default
+  database: haml-demo-test
+  host: localhost
