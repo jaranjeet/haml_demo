@@ -1,0 +1,57 @@
+-# https://bootsnipp.com/snippets/featured/login-and-register-tabbed-form
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-login
+      .panel-heading
+        .row
+          .col-xs-6
+            %a{href: '#', class: 'active', id: 'login-form-link'} Login
+          .col-xs-6
+            %a{href: '#', id: 'register-form-link'} Register
+      .panel-body
+        .row
+          .col-lg-12
+            = form_tag(sign_in_path, method: 'post', id: 'login-form', style: 'display: block') do
+              .form-group
+                %input{type: 'text', name: 'username', id: 'sign-in-username', tabindex: '1', class: 'form-control', placeholder: 'Username', value: ''}
+              .form-group
+                %input{type: 'password', name: 'password', id: 'sign-in-password',tabindex: '2', class: 'form-control', placeholder: 'Password'}
+              .form-group.text-center
+                %input{type: 'checkbox', tabindex: '3', class: '', name: 'remember', id: 'remember'}
+                %label{for: 'remember'} Remember Me
+              .form-group
+                .row
+                  .col-sm-6.col-sm-offset-3
+                    %input{type: 'submit', name: 'login-submit', id: 'login-submit', tabindex: '4', class: 'form-control btn btn-primary', value: 'Log In'}
+              .form-group
+                .row
+                  .col-lg-12
+                    .text-center
+                      %a{href: 'https://phpoll.com/recover', tabindex: '5', class: 'forgot-password'} Forgot Password?
+
+            .form{id: 'register-form', action: '', method: 'post', role: 'form', style: 'display:none'}
+              .form-group
+                %input{type: 'text', name: 'username', id: 'sign-up-username', tabindex: '1', class: 'form-control', placeholder: 'Username', value: ''}
+              .form-group
+                %input{type: 'email', name: 'email', id: 'email', tabindex: '1', class: 'form-control', placeholder: 'Email Address', value: ''}
+              .form-group
+                %input{type: 'password', name: 'password', id: 'sign-up-password', tabindex: '2', class: 'form-control', placeholder: 'Password'}
+              .form-group
+                %input{type: 'password', name: 'confirm-password', id: 'confirm-password', tabindex: '2', class: 'form-control', placeholder: 'Confirm password'}
+              .form-group
+                .row
+                  .col-sm-6.col-sm-offset-3
+                    %input{type: 'submit', name: 'register-submit', id: 'register-submit', tabindex: '4', class: 'form-control btn btn-register btn-success', value: 'Register Now'}
+
+:javascript
+  $(document).on('click', '#login-form-link', function(e){
+    $('#login-form').show();
+    $('#register-form').hide();
+    e.stopPropagation();
+  });
+
+  $(document).on('click', '#register-form-link', function(e){
+    $('#login-form').hide();
+    $('#register-form').show();
+    e.stopPropagation();
+  });
