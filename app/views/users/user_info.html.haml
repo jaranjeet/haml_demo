@@ -1,0 +1,14 @@
+%h3 User Information page
+
+.row
+  .col-md-2
+    Username: 
+  .col-md-3
+    %p{class: 'font-weight-bold'}= session[:username].capitalize
+.row
+  .col-md-2
+    Email: 
+  .col-md-2
+    = session[:email]
+
+
