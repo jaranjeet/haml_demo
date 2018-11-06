@@ -42,20 +42,24 @@
                 .row
                   .col-sm-6.col-sm-offset-3
                     %input{type: 'submit', name: 'register-submit', id: 'register-submit', tabindex: '4', class: 'form-control btn btn-register btn-success', value: 'Register Now'}
-      .row
+      %div{class: 'row', id: 'login-errors'}
         - flash.each do |name, msg|
           %li{class: 'text-danger'}
             = msg
 
+
 :javascript
-  $(document).on('click', '#login-form-link', function(e){
+  $('#login-errors').fadeIn(2000).delay(2000).fadeOut(2000);
+
+  $(document).on('click', '#login-form-link', function(e) {
     $('#login-form').show();
     $('#register-form').hide();
     e.stopPropagation();
   });
 
-  $(document).on('click', '#register-form-link', function(e){
+  $(document).on('click', '#register-form-link', function(e) {
     $('#login-form').hide();
     $('#register-form').show();
     e.stopPropagation();
   });
+
